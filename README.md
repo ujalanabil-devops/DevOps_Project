@@ -1,6 +1,7 @@
 # 🚀 Dockerized Node.js + MongoDB Project
 
 > Production-style beginner DevOps project using Docker, MongoDB, Mongo Express, and Node.js.
+> This project demonstrates how a local Node.js application connects securely to MongoDB running inside Docker Container.
 
 ---
 
@@ -56,13 +57,15 @@
 # 📂 Project Structure
 
 ```bash
-project/
+node-mongo-docker-project/
 │
 ├── screenshots/
 ├── app/
 │   ├── server.js
 │   ├── package.json
-│   └── index.html
+│   ├── index.html
+|   └── images/
+|     
 │
 ├── README.md
 └── docker-compose.yml
@@ -75,7 +78,12 @@ project/
 ## 1️⃣ Create Docker Network
 
 ```bash
-docker network create mynet
+docker docker network create mongo-network 
+
+```
+
+```bash
+docker network ls
 ```
 
 ---
@@ -83,9 +91,13 @@ docker network create mynet
 ## 2️⃣ Run MongoDB
 
 ```bash
+docker pull mongo
+```
+
+```bash
 docker run -d \
 --name mongodb \
---network mynet \
+--network mongo-network \
 -p 27017:27017 \
 -e MONGO_INITDB_ROOT_USERNAME=admin \
 -e MONGO_INITDB_ROOT_PASSWORD=password \
@@ -97,9 +109,13 @@ mongo
 ## 3️⃣ Run Mongo Express
 
 ```bash
+docker pull mongo-express
+```
+
+```bash
 docker run -d \
 --name mongo-express \
---network mynet \
+--network mongo-network \
 -p 8081:8081 \
 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
 -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
@@ -112,8 +128,101 @@ mongo-express
 ## 4️⃣ Start Node.js App
 
 ```bash
+install npm
+```
+
+```bash
 node server.js
 ```
+
+---
+# 🔍 Useful Docker Commands
+
+## Show images
+
+```bash
+docker images
+```
+
+## Show containers
+
+```bash
+docker ps (to check running containers only)
+docker ps -a (to check stop and running containers)
+```
+
+## Stop container
+
+```bash
+docker stop mongodb
+docker stop mongo-express
+```
+
+## Start container
+
+```bash
+docker start mongodb
+docker start mongo-express
+```
+
+## Remove container
+
+```bash
+docker rm mongodb
+docker rm mongo-express
+```
+
+## Remove network
+
+```bash
+docker network rm mynet
+```
+
+---
+
+# 🌐 Push Project to GitHub
+
+## Initialize Git
+
+```bash
+git init
+```
+
+## Add files
+
+```bash
+git add .
+```
+
+## Commit
+
+```bash
+git commit -m "Initial Docker MongoDB Node.js Project"
+```
+
+## Add GitHub Repository
+
+```bash
+git remote add origin YOUR_GITHUB_REPO_URL
+```
+
+## Push Code
+
+```bash
+git branch -M main
+git push -u origin main
+```
+
+---
+
+# 📸 Screenshots To Add
+
+Recommended screenshots for GitHub:
+
+- Docker containers running
+- Mongo Express dashboard
+- Node.js terminal output
+- Browser output
 
 ---
 
@@ -125,7 +234,18 @@ node server.js
 | Mongo Express | http://localhost:8081 |
 
 ---
+# 🎯 Learning Outcomes
 
+After completing this project you will understand:
+
+- Docker networking
+- MongoDB containers
+- Mongo Express setup
+- Node.js MongoDB connection
+- Express.js basics
+- GitHub project deployment
+
+---
 # 📈 Future Improvements
 
 - Docker Compose
@@ -139,9 +259,9 @@ node server.js
 
 # 👨‍💻 Author
 
-Your Name
+SYED NABIL AKHTAR
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/ujalanabil-devops
 
 ---
 ⭐ If you like this project, give it a star!
