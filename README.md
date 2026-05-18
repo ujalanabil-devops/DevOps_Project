@@ -78,7 +78,7 @@ node-mongo-docker-project/
 ## 1️⃣ Create Docker Network
 
 ```bash
-docker docker network create mongo-network 
+docker network create mongo-network 
 
 ```
 
