@@ -615,6 +615,6 @@ This Dockerfile:
 
 ---
 
-# 👨‍💻 Author
+# 👨‍💻 Author - SYED NABIL AKHTAR
 
 Created for learning Docker + Node.js production deployment.
