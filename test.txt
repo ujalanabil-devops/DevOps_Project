@@ -1,5 +1,3 @@
-<<<<<<< HEAD
+
 hello git
-=======
-hello git
->>>>>>> bc24dfc (new commit)
+
